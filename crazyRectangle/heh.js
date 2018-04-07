@@ -9,7 +9,7 @@ window.onload = function(){
     start: function(){
         this.div = document.createElement('div');
         this.div.style.width = '69px';
-        this.div.style.height = '420';
+        this.div.style.height = '120';
         this.div.style.background = 'magenta';
         this.div.style.position = 'absolute';
         var body = document.getElementsByTagName('body')[0];
@@ -23,6 +23,9 @@ window.onload = function(){
       this.div.style.top = this.topPx + 'px';
       if(this.topPx + 100 >= this.windowHeight || this.topPx <= 0) this.vY = -this.vY;
 
+      if((this.topPx + 100 >= this.windowHeight || this.topPx <= 0) || (this.leftPx + 100 >= this.windowWidth || this.leftPx<=0)){
+        this.div.style.width = Math.floor((Math.random() * 100) + 1);
+        this.div.style.height = Math.floor((Math.random() * 100) + 1);}
 
       this.leftPx += this.vX;
       this.div.style.left = this.leftPx + 'px';
