@@ -48,8 +48,8 @@ namespace Arena {
             this.context.lineWidth = Tank.Tank.getBarrelWidth();
             this.context.moveTo(position.x,position.y);
             let end = Util.getVector(position, radius, tank.angle);
-            //this.context
-            //this.context
+            this.context.lineTo(end.x, end.y);
+            this.context.stroke();
             this.context.closePath();
         }
     }

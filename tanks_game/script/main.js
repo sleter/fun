@@ -17,15 +17,33 @@ class Game {
         this.holder = document.getElementById('content');
         this.arena = new Arena.Arena(this.holder.clientHeight);
         this.holder.appendChild(this.arena.canvas);
+        this.redTank = new Tank.Tank(new Pos(20, 40), 'red');
+        this.blueTank = new Tank.Tank(new Pos(40, 20), 'blue');
+        this.keys = new Map();
+    }
+    processKey(event) {
+        this.keys[event.keyCode] = (event.type == 'keydown');
     }
     update() {
-        this.arena.redraw();
+        //redTank
+        //left
+        if (this.keys[37])
+            this.redTank.rotate(false);
+        if (this.keys[39])
+            this.redTank.rotate(true);
+        if (this.keys[38])
+            this.redTank.move(true);
+        if (this.keys[40])
+            this.redTank.move(false);
+        this.arena.redraw(this.redTank, this.blueTank);
     }
 }
 // start the app
 function start() {
     let game = new Game();
-    game.update();
+    addEventListener('keydown', (event) => game.processKey(event));
+    addEventListener('keyup', (event) => game.processKey(event));
+    setInterval(() => game.update(), 33);
 }
 // initialize app - when browser load all files
 window.onload = start;
