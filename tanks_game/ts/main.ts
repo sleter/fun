@@ -41,8 +41,11 @@ class Game{
         //redTank
         //left
         if(this.keys[37])this.redTank.rotate(false);
+        //right
         if(this.keys[39])this.redTank.rotate(true);
+        //forward
         if(this.keys[38])this.redTank.move(true);
+        //run for your life
         if(this.keys[40])this.redTank.move(false);
         
 
