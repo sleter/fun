@@ -1,0 +1,43 @@
+<div id="app">
+        <div v-if="helloVisible">
+            {{ hello }}
+        </div>
+</div>
+
+<div id="app2">
+    zawartość inputa: <input type="text" v-model="hello">
+    <div v-bind:class="{ default: !inputIsBiggerThanTwo, active:inputIsBiggerThanTwo }">
+        treść wiadomości: {{ hello }}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            hello: 'Hello World',
+            helloVisible: true
+            }})
+    let app2 = new Vue({
+        el: '#app2',
+        data: {
+            hello: 'Hello World'
+        },
+        computed: {
+            inputIsBiggerThanTwo: function() {
+            return this.hello.length > 2;
+        }
+    }})
+</script>
+
+<style>
+    .default {
+        color: FireBrick;
+    }
+    .active {
+        color: green;
+    }
+</style>
+
+
